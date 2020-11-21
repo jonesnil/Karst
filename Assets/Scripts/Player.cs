@@ -39,6 +39,16 @@ public class Player : MonoBehaviour
         Vector3 move = (HorizontalMovement + VerticalMovement) * Time.deltaTime * _movementSpeed;
         this.transform.position += move;
 
+        if (Input.GetAxis("Horizontal") < 0) 
+        {
+            animator.SetBool("faceRight", false);
+        }
+
+        if (Input.GetAxis("Horizontal") > 0)
+        {
+            animator.SetBool("faceRight", true);
+        }
+
         animator.SetFloat("moveSpeed", move.magnitude);
 
         _data.playerPos = this.transform.position;
