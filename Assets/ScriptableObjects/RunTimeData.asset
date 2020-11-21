@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2856b48ce75b6bc4a960fd45e51dedfc, type: 3}
   m_Name: RunTimeData
   m_EditorClassIdentifier: 
-  playerPos: {x: 0.80306447, y: 0.42071697, z: 0}
+  playerPos: {x: -2.6554813, y: 1.3853321, z: 0}
+  health: -3
+  startingHealth: 10

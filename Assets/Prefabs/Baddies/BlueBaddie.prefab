@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 3818972859452014026}
   - component: {fileID: 573417803342577049}
   - component: {fileID: 241484034675209337}
-  - component: {fileID: 6732634043482500283}
+  - component: {fileID: 1847707287883802057}
+  - component: {fileID: 8738015969627422194}
   m_Layer: 0
-  m_Name: Baddie
+  m_Name: BlueBaddie
   m_TagString: Baddie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,8 +29,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3818972859452014025}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.11, y: -3.25, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 6, y: 6, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -47,7 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data: {fileID: 11400000, guid: 9f886945a1e0f7e42a9b2b81cd6bb05c, type: 2}
-  _moveSpeed: 2
+  _moveSpeed: 1
+  damage: 4
 --- !u!50 &573417803342577049
 Rigidbody2D:
   serializedVersion: 4
@@ -109,8 +111,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0.9150943, g: 0.1516935, b: 0.1516935, a: 1}
+  m_Sprite: {fileID: -4346765908043331788, guid: e21d7ceb1835a9549a6f1211483bc31f, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -120,7 +122,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &6732634043482500283
+--- !u!95 &1847707287883802057
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3818972859452014025}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7bb81b470660883468a589b1ce9a03c5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!60 &8738015969627422194
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -137,7 +158,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.2, y: 0.2}
+    oldSize: {x: 0.16, y: 0.16}
     newSize: {x: 0.2, y: 0.2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -145,12 +166,12 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.049999997, y: 0.099999994}
-      - {x: -0.099999994, y: 0.044999998}
-      - {x: -0.099999994, y: -0.03}
-      - {x: -0.074999996, y: -0.085}
-      - {x: -0.065, y: -0.099999994}
-      - {x: 0.06, y: -0.099999994}
-      - {x: 0.099999994, y: -0.074999996}
-      - {x: 0.099999994, y: 0.055}
-      - {x: 0.049999997, y: 0.099999994}
+    - - {x: -0.0021297145, y: 0.049544536}
+      - {x: -0.052884057, y: 0.051936314}
+      - {x: -0.04908053, y: -0.014788458}
+      - {x: -0.020522507, y: -0.034788467}
+      - {x: 0.01132914, y: -0.03251768}
+      - {x: 0.044231884, y: -0.012921896}
+      - {x: 0.049080487, y: 0.00095072016}
+      - {x: 0.04717875, y: 0.037147835}
+      - {x: 0.041442025, y: 0.05859136}
