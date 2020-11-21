@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 {
 
     [SerializeField] float _moveSpeed;
+    public Vector3 direction;
     
     // Start is called before the first frame update
     void Start()
@@ -14,7 +15,11 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     {
-        this.transform.position += this.transform.forward * _moveSpeed * Time.deltaTime;
+        if (this.transform.position != direction)
+        {
+            this.transform.position += (direction - this.transform.position).normalized * _moveSpeed;
+            //this.transform.position = Vector3.MoveTowards(this.transform.position, _data.playerPos, (.01f *_moveSpeed));
+        }
     }
 
 
