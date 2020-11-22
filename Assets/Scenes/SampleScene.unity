@@ -351,7 +351,7 @@ GameObject:
   - component: {fileID: 359852948}
   - component: {fileID: 359852949}
   - component: {fileID: 359852950}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Staff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1503,6 +1503,36 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1308700426
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1308700427}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1308700427
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1308700426}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.254, y: -0.007, z: -1.9352759}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1442987445
 GameObject:
   m_ObjectHideFlags: 0
@@ -1517,7 +1547,7 @@ GameObject:
   - component: {fileID: 1442987449}
   - component: {fileID: 1442987448}
   - component: {fileID: 1442987451}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hero
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1584,15 +1614,15 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.0031843, y: -0.017725058}
-      - {x: -0.023624577, y: -0.018339343}
-      - {x: -0.031554326, y: -0.020265348}
-      - {x: -0.03397442, y: -0.032394536}
+    - - {x: 0.004527431, y: -0.0009394819}
+      - {x: -0.021609962, y: 0.0011319246}
+      - {x: -0.05304373, y: 0.001891613}
+      - {x: -0.040689867, y: -0.02232319}
       - {x: -0.04017754, y: -0.05002367}
       - {x: -0.045635127, y: -0.08354024}
       - {x: 0.055, y: -0.085}
-      - {x: 0.05180891, y: -0.017821714}
-      - {x: 0.032944024, y: -0.017760783}
+      - {x: 0.060538948, y: -0.0010361392}
+      - {x: 0.022870852, y: -0.0009752158}
 --- !u!212 &1442987449
 SpriteRenderer:
   m_ObjectHideFlags: 0

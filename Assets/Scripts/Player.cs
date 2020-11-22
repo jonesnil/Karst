@@ -72,24 +72,31 @@ public class Player : MonoBehaviour
         Vector3 VerticalMovement = new Vector3(0, Input.GetAxis("Vertical"), 0);
         Vector3 move = (HorizontalMovement + VerticalMovement) * Time.deltaTime * _movementSpeed;
 
-        RaycastHit2D[] results = new RaycastHit2D[10];
+        RaycastHit2D[] results = new RaycastHit2D[4];
 
-        bool hitWall = false;
-        int hit = collider.Raycast(move, results, move.magnitude);
+        Vector3 bottomOfCollider = new Vector3(transform.position.x, transform.position.y - .5f, transform.position.z);
+        Vector3 rightOfCollider = new Vector3(transform.position.x + .25f, transform.position.y - .25f, transform.position.z);
+        Vector3 leftOfCollider = new Vector3(transform.position.x + .25f, transform.position.y - .25f, transform.position.z);
+        Vector3[] colliderCheckPoints = { transform.position, bottomOfCollider, rightOfCollider, leftOfCollider };
 
-        foreach (RaycastHit2D result in results)
-        {
-            if (result.collider != null && result.collider.tag == "Wall")
+        Collider2D collided = null;
+
+        int index = 0;
+
+        while (index < 4) 
+        { 
+            results[index] = Physics2D.Raycast(colliderCheckPoints[index], move, move.magnitude, ~(1 << 8));
+            if (results[index].collider != null) 
             {
-                hitWall = true;
+                collided = results[index].collider;
             }
+            index += 1;
         }
-        
 
-        if(hit == 0 && !cantMove)
+        if(collided == null && !cantMove)
             this.transform.position += move;
 
-        else if (!cantMove && knockedBack && !hitWall)
+        else if (collided != null && !cantMove && knockedBack && !(collided.tag == "Wall"))
             this.transform.position += move;
 
         if (Input.GetAxis("Horizontal") < 0 && !sprite.flipX) 
@@ -196,10 +203,28 @@ public class Player : MonoBehaviour
 
     void KnockBack() 
     {
+        RaycastHit2D[] results = new RaycastHit2D[4];
 
-        
-        RaycastHit2D[] results = new RaycastHit2D[10];
-        if (collider.Raycast(knockDirection, results, knockDirection.magnitude) == 0 && (knockBackFrame <= knockBackFrames))
+        Vector3 bottomOfCollider = new Vector3(transform.position.x, transform.position.y - .5f, transform.position.z);
+        Vector3 rightOfCollider = new Vector3(transform.position.x + .25f, transform.position.y - .25f, transform.position.z);
+        Vector3 leftOfCollider = new Vector3(transform.position.x + .25f, transform.position.y - .25f, transform.position.z);
+        Vector3[] colliderCheckPoints = { transform.position, bottomOfCollider, rightOfCollider, leftOfCollider };
+
+        Collider2D collided = null;
+
+        int index = 0;
+
+        while (index < 4)
+        {
+            results[index] = Physics2D.Raycast(colliderCheckPoints[index], knockDirection, knockDirection.magnitude, ~(1 << 8));
+            if (results[index].collider != null)
+            {
+                collided = results[index].collider;
+            }
+            index += 1;
+        }
+
+        if (collided == null && (knockBackFrame <= knockBackFrames))
         {
             this.transform.position += knockDirection;
         }
