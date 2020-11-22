@@ -10,4 +10,5 @@ public class RunTimeData : ScriptableObject
     public Vector3 playerPos;
     public float health;
     public float startingHealth;
+    public int bulletDamage;
 }

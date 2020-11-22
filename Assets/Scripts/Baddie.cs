@@ -6,6 +6,11 @@ public class Baddie : MonoBehaviour
 {
     [SerializeField] RunTimeData _data;
     [SerializeField] float _moveSpeed;
+    [SerializeField] int _health;
+    int redFrames;
+    int redFrame;
+    bool red;
+    Color spriteColor;
     public int damage;
     Rigidbody2D body;
     SpriteRenderer sprite;
@@ -17,6 +22,10 @@ public class Baddie : MonoBehaviour
         body = this.GetComponent<Rigidbody2D>();
         sprite = this.GetComponent<SpriteRenderer>();
         seen = false;
+        spriteColor = sprite.color;
+        red = false;
+        redFrame = 0;
+        redFrames = 15;
     }
 
     // Update is called once per frame
@@ -29,6 +38,14 @@ public class Baddie : MonoBehaviour
 
         Vector3 dontRotate = new Vector3(0f, 0f, 0f);
         this.transform.rotation = Quaternion.Euler(dontRotate);
+
+        if (this.red) 
+        {
+            this.redFrame += 1;
+
+            if (this.redFrame == redFrames)
+                RevertColor();
+        }
     }
 
     private void OnBecameVisible()
@@ -40,8 +57,14 @@ public class Baddie : MonoBehaviour
     {
         if (collision.collider.gameObject.tag == "Bullet")
         {
+            this._health -= _data.bulletDamage;
+
+            TurnRed();
+
+            if (this._health <= 0)
+                Destroy(this.gameObject);
             Destroy(collision.collider.gameObject);
-            Destroy(this.gameObject);
+
         }
 
         if (collision.collider.gameObject.tag == "Player")
@@ -67,5 +90,21 @@ public class Baddie : MonoBehaviour
                 sprite.flipX = false;
             }
         }
+    }
+
+    void TurnRed() 
+    {
+        this.red = true;
+        this.redFrame = 0;
+        
+        sprite.color = Color.red;
+    }
+
+    void RevertColor() 
+    {
+        this.red = false;
+        this.redFrame = 0;
+
+        sprite.color = spriteColor;
     }
 }

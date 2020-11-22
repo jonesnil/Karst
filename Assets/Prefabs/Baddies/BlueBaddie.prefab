@@ -48,7 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data: {fileID: 11400000, guid: 9f886945a1e0f7e42a9b2b81cd6bb05c, type: 2}
-  _moveSpeed: 1
+  _moveSpeed: 2
+  _health: 15
   damage: 4
 --- !u!50 &573417803342577049
 Rigidbody2D:
@@ -166,8 +167,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.0021297145, y: 0.049544536}
-      - {x: -0.052884057, y: 0.051936314}
+    - - {x: 0.015466911, y: 0.027952557}
+      - {x: -0.008113356, y: 0.025718413}
+      - {x: -0.040886354, y: 0.054335427}
+      - {x: -0.05356765, y: 0.036774084}
       - {x: -0.04908053, y: -0.014788458}
       - {x: -0.020522507, y: -0.034788467}
       - {x: 0.01132914, y: -0.03251768}
