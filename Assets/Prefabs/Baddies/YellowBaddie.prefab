@@ -50,7 +50,8 @@ MonoBehaviour:
   _data: {fileID: 11400000, guid: 9f886945a1e0f7e42a9b2b81cd6bb05c, type: 2}
   _moveSpeed: 4
   _health: 5
-  damage: 1
+  deathEffectPrefab: {fileID: 3748772738397898734, guid: 24ef4c00e617ce143b730542f0269510, type: 3}
+  damage: 2
 --- !u!50 &186424109270700846
 Rigidbody2D:
   serializedVersion: 4

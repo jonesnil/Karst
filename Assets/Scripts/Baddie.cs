@@ -7,11 +7,13 @@ public class Baddie : MonoBehaviour
     [SerializeField] RunTimeData _data;
     [SerializeField] float _moveSpeed;
     [SerializeField] int _health;
+    [SerializeField] GameObject deathEffectPrefab;
+
     int redFrames;
     int redFrame;
     bool red;
     Color spriteColor;
-    public int damage;
+    public float damage;
     Rigidbody2D body;
     SpriteRenderer sprite;
     bool seen;
@@ -61,9 +63,11 @@ public class Baddie : MonoBehaviour
 
             TurnRed();
 
-            if (this._health <= 0)
-                Destroy(this.gameObject);
             Destroy(collision.collider.gameObject);
+
+
+            if (this._health <= 0)
+                Die();
 
         }
 
@@ -106,5 +110,11 @@ public class Baddie : MonoBehaviour
         this.redFrame = 0;
 
         sprite.color = spriteColor;
+    }
+
+    public void Die() 
+    {
+        Instantiate(deathEffectPrefab, this.transform.position, Quaternion.identity);
+        Destroy(this.gameObject);
     }
 }

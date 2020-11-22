@@ -13,10 +13,16 @@ public static class GameEvents
 {
 
     public static event EventHandler<BaddieEventArgs> PlayerHit;
+    public static event EventHandler GameOver;
 
     public static void InvokePlayerHit(Baddie baddie)
     {
         PlayerHit(null, new BaddieEventArgs { baddiePayload = baddie });
+    }
+
+    public static void InvokeGameOver()
+    {
+        GameOver(null, EventArgs.Empty);
     }
 
 }

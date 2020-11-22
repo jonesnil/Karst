@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Player : MonoBehaviour
 {
@@ -32,9 +33,13 @@ public class Player : MonoBehaviour
     {
         animator = this.GetComponent<Animator>();
         health = startingHealth;
+
         GameEvents.PlayerHit += OnPlayerHit;
+        GameEvents.GameOver += OnGameOver;
+
         _data.startingHealth = startingHealth;
         _data.health = health;
+        _data.iFrames = this.iFrames;
         sprite = this.GetComponent<SpriteRenderer>();
         body = this.GetComponent<Rigidbody2D>();
         collider = this.GetComponent<Collider2D>();
@@ -53,11 +58,6 @@ public class Player : MonoBehaviour
         Move();
 
         Shoot();
-
-        if (health <= 0) 
-        {
-            Destroy(this.gameObject);
-        }
 
         if(knockedBack)
             KnockBack();
@@ -159,28 +159,12 @@ public class Player : MonoBehaviour
             cantMove = true;
             knockBackFrame = 0;
             knockDirection = (this.transform.position - baddie.gameObject.transform.position).normalized * knockBackSpeed * Time.deltaTime;
-            Destroy(baddie.gameObject);
+
+            baddie.Die();
         }
     }
 
 
-    void FlashColor() 
-    {
-        if ((health / startingHealth) > (2f / 3f))
-        {
-            sprite.color = Color.green;
-        }
-
-        else if ((health / startingHealth) > (1f / 3f))
-        {
-            sprite.color = Color.yellow;
-        }
-
-        else
-        {
-            sprite.color = Color.red;
-        }
-    }
 
     Collider2D GetCollision(Vector3 direction) 
     {
@@ -217,16 +201,10 @@ public class Player : MonoBehaviour
             this.transform.position += knockDirection;
         }
 
-        if (knockBackFrame == knockBackFrames)
-        {
-            FlashColor();
-        }
-
         knockBackFrame += 1;
 
         if (knockBackFrame >= noMoveFrames && cantMove) 
         {
-            RevertColor();
             cantMove = false;
         }
 
@@ -237,8 +215,10 @@ public class Player : MonoBehaviour
         }
     }
 
-    void RevertColor() 
+    void OnGameOver(object sender, EventArgs args) 
     {
-        sprite.color = spriteColor;
+        GameEvents.PlayerHit -= OnPlayerHit;
+        GameEvents.GameOver -= OnGameOver;
     }
+
 }

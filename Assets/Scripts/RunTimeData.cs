@@ -11,4 +11,5 @@ public class RunTimeData : ScriptableObject
     public float health;
     public float startingHealth;
     public int bulletDamage;
+    public int iFrames;
 }
