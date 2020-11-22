@@ -22,6 +22,10 @@ public class Player : MonoBehaviour
     [SerializeField] int noMoveFrames;
     [SerializeField] int iFrames;
     [SerializeField] float knockBackSpeed;
+    Transform staff;
+    Animator staffAnimator;
+    SpriteRenderer staffSprite;
+    bool runningAnimation;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +40,11 @@ public class Player : MonoBehaviour
         collider = this.GetComponent<Collider2D>();
         knockedBack = false;
         cantMove = false;
+        spriteColor = sprite.color;
+        staff = this.transform.GetChild(0);
+        staffAnimator = staff.GetComponent<Animator>();
+        staffSprite = staff.GetComponent<SpriteRenderer>();
+        runningAnimation = false;
     }
 
     // Update is called once per frame
@@ -52,6 +61,8 @@ public class Player : MonoBehaviour
 
         if(knockedBack)
             KnockBack();
+
+        StaffAim();
 
     }
 
@@ -78,7 +89,7 @@ public class Player : MonoBehaviour
         if(hit == 0 && !cantMove)
             this.transform.position += move;
 
-        if (!cantMove && knockedBack && !hitWall)
+        else if (!cantMove && knockedBack && !hitWall)
             this.transform.position += move;
 
         if (Input.GetAxis("Horizontal") < 0 && !sprite.flipX) 
@@ -93,6 +104,24 @@ public class Player : MonoBehaviour
 
         animator.SetFloat("moveSpeed", move.magnitude);
 
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Player_MoveRight") && !runningAnimation) 
+        {
+            runningAnimation = true;
+            staff.localPosition = new Vector3(staff.localPosition.x, staff.localPosition.y + .01f, staff.localPosition.z);
+        }
+
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Player_IdleRight") && runningAnimation)
+        {
+            runningAnimation = false;
+            staff.localPosition = new Vector3(staff.localPosition.x, staff.localPosition.y - .01f, staff.localPosition.z);
+        }
+
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Player_HitRight") && runningAnimation)
+        {
+            runningAnimation = false;
+            staff.localPosition = new Vector3(staff.localPosition.x, staff.localPosition.y - .01f, staff.localPosition.z);
+        }
+
         _data.playerPos = this.transform.position;
 
     }
@@ -101,15 +130,34 @@ public class Player : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Vector3 mouseDummy = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector3 mouseWorldPos = new Vector3(mouseDummy.x, mouseDummy.y, 0);
-            Vector3 directionToMouse = (mouseWorldPos - this.transform.position) * 10000;
+            if (!staffAnimator.GetBool("shot"))
+            {
+                Vector3 mouseDummy = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Vector3 mouseWorldPos = new Vector3(mouseDummy.x, mouseDummy.y, 0);
+                Vector3 directionToMouse = (mouseWorldPos - this.transform.position);
 
-            Bullet newBullet = Instantiate(bulletPrefab, this.transform.position, Quaternion.identity).GetComponent<Bullet>();
-            newBullet.direction = directionToMouse;
+                Bullet newBullet = Instantiate(bulletPrefab, this.transform.position, Quaternion.identity).GetComponent<Bullet>();
+                newBullet.direction = directionToMouse * 10000;
+
+                staffAnimator.SetBool("shot", true);
+            }
         }
     }
 
+    void StaffAim() 
+    {
+        if (Camera.main.ScreenToWorldPoint(Input.mousePosition).x > this.transform.position.x && staffSprite.flipX) 
+        {
+            staff.localPosition = new Vector3(-staff.localPosition.x, staff.localPosition.y, staff.localPosition.z);
+            staffSprite.flipX = false;
+        }
+
+        if (Camera.main.ScreenToWorldPoint(Input.mousePosition).x < this.transform.position.x && !staffSprite.flipX)
+        {
+            staff.localPosition = new Vector3(-staff.localPosition.x, staff.localPosition.y, staff.localPosition.z);
+            staffSprite.flipX = true;
+        }
+    }
 
     void OnPlayerHit(object sender, BaddieEventArgs args) 
     {
@@ -119,7 +167,6 @@ public class Player : MonoBehaviour
             this.health -= baddie.damage;
             _data.health = health;
             animator.SetBool("hit", true);
-            Invoke("FlashColor", .2f);
             knockedBack = true;
             cantMove = true;
             knockBackFrame = 0;
@@ -131,8 +178,6 @@ public class Player : MonoBehaviour
 
     void FlashColor() 
     {
-        spriteColor = sprite.color;
-
         if ((health / startingHealth) > (2f / 3f))
         {
             sprite.color = Color.green;
@@ -147,20 +192,28 @@ public class Player : MonoBehaviour
         {
             sprite.color = Color.red;
         }
-
-        Invoke("RevertColor", .1f);
     }
 
     void KnockBack() 
     {
+
         
         RaycastHit2D[] results = new RaycastHit2D[10];
         if (collider.Raycast(knockDirection, results, knockDirection.magnitude) == 0 && (knockBackFrame <= knockBackFrames))
+        {
             this.transform.position += knockDirection;
+        }
+
+        if (knockBackFrame == knockBackFrames)
+        {
+            FlashColor();
+        }
+
         knockBackFrame += 1;
 
         if (knockBackFrame >= noMoveFrames && cantMove) 
         {
+            RevertColor();
             cantMove = false;
         }
 

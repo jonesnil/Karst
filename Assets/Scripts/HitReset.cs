@@ -19,6 +19,7 @@ public class HitReset : StateMachineBehaviour
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.SetBool("hit", false);
+        animator.SetBool("shot", false);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

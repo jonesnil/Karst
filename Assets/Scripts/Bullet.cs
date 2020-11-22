@@ -13,6 +13,10 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         collider = this.GetComponent<PolygonCollider2D>();
+
+        Vector3 mouseDummy = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 mouseWorldPos = new Vector3(mouseDummy.x, mouseDummy.y, 0);
+        transform.right = mouseWorldPos - transform.position;
     }
 
     private void Update()

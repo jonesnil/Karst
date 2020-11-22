@@ -1,13 +1,16 @@
 fileFormatVersion: 2
-guid: 2ce97c351eb44cc4da1f5b7291ae1f87
+guid: 6625b82d9b9c7d04a8f47b463c41a128
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4922619773171764887
-    second: ground2up_0
+      213: 105169053199506356
+    second: projectile_0
   - first:
-      213: 331008528527987966
-    second: ground2up_1
+      213: -3209795618878514358
+    second: projectile_1
+  - first:
+      213: 2935192031122453201
+    second: projectile_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -52,7 +55,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 48
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -107,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ground2up_0
+      name: projectile_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 4
         y: 0
-        width: 16
-        height: 16
+        width: 17
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -121,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 96178cfb5675fabb0800000000000000
-      internalID: -4922619773171764887
+      spriteID: 4bb125952b2a57100800000000000000
+      internalID: 105169053199506356
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ground2up_1
+      name: projectile_1
       rect:
         serializedVersion: 2
-        x: 16
+        x: 25
         y: 0
-        width: 16
-        height: 16
+        width: 18
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -142,8 +145,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ef41980c08af79400800000000000000
-      internalID: 331008528527987966
+      spriteID: a4b142f04e38473d0800000000000000
+      internalID: -3209795618878514358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: projectile_2
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 0
+        width: 18
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d27c9ad995ebb820800000000000000
+      internalID: 2935192031122453201
       vertices: []
       indices: 
       edges: []
