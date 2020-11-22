@@ -1,67 +1,49 @@
 fileFormatVersion: 2
-guid: e1b81c66c093b7e4fa57234c4302fb56
+guid: 8c53edee950c561409da7e0d2280a8c3
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8951569964791827343
-    second: cave-walls_0
+      213: 5338682673092851125
+    second: incave_water_0
   - first:
-      213: 4127776842949863306
-    second: cave-walls_1
+      213: 5493957206365424080
+    second: incave_water_1
   - first:
-      213: 8458642336486715502
-    second: cave-walls_2
+      213: -8473997419176010284
+    second: incave_water_2
   - first:
-      213: -1097957627847778270
-    second: cave-walls_3
+      213: 4630263182011859974
+    second: incave_water_3
   - first:
-      213: -8974814931099859912
-    second: cave-walls_4
+      213: -2989632812649685911
+    second: incave_water_4
   - first:
-      213: -3848883264599477629
-    second: cave-walls_5
+      213: -1260067646604620056
+    second: incave_water_5
   - first:
-      213: -2455893509654077102
-    second: cave-walls_6
+      213: -3104465443378884616
+    second: incave_water_6
   - first:
-      213: -2823502271596073838
-    second: cave-walls_7
+      213: -4619989050733967237
+    second: incave_water_7
   - first:
-      213: -6127635285331351652
-    second: cave-walls_8
+      213: -6060737817792601155
+    second: incave_water_8
   - first:
-      213: 17579384827517870
-    second: cave-walls_9
+      213: 736545744904489701
+    second: incave_water_9
   - first:
-      213: -8118312267939741144
-    second: cave-walls_10
+      213: 1516641376264930148
+    second: incave_water_10
   - first:
-      213: -4538476622478199632
-    second: cave-walls_11
+      213: 1811469364653003506
+    second: incave_water_11
   - first:
-      213: 5658300939105757894
-    second: cave-walls_12
+      213: -6797485389191486539
+    second: incave_water_12
   - first:
-      213: 793764793529189403
-    second: cave-walls_13
-  - first:
-      213: 7359141916080898242
-    second: cave-walls_14
-  - first:
-      213: 4834289792852567855
-    second: cave-walls_15
-  - first:
-      213: -4554852956010272126
-    second: cave-walls_16
-  - first:
-      213: -7433000025511369802
-    second: cave-walls_17
-  - first:
-      213: -6228250804740282033
-    second: cave-walls_18
-  - first:
-      213: -6954084637766213322
-    second: cave-walls_19
+      213: 8726525537581241631
+    second: incave_water_13
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -161,337 +143,295 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: cave-walls_0
+      name: incave_water_0
       rect:
         serializedVersion: 2
         x: 16
-        y: 50
-        width: 16
+        y: 64
+        width: 16.2
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 174f6826b82a5c380800000000000000
-      internalID: -8951569964791827343
+      spriteID: 5b57b3a0b9fc61a40800000000000000
+      internalID: 5338682673092851125
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cave-walls_1
+      name: incave_water_1
       rect:
         serializedVersion: 2
-        x: 32
-        y: 50
-        width: 16
+        x: 48
+        y: 64
+        width: 16.2
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a872c143b2fc84930800000000000000
-      internalID: 4127776842949863306
+      spriteID: 0d9cb9098f47e3c40800000000000000
+      internalID: 5493957206365424080
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cave-walls_2
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 53
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e60fe54a362236570800000000000000
-      internalID: 8458642336486715502
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cave-walls_3
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 53
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 220e3bdca5543c0f0800000000000000
-      internalID: -1097957627847778270
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cave-walls_4
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 53
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 834cbeaee5d037380800000000000000
-      internalID: -8974814931099859912
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cave-walls_5
-      rect:
-        serializedVersion: 2
-        x: 112
-        y: 53
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3823a972015069ac0800000000000000
-      internalID: -3848883264599477629
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cave-walls_7
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 37
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 29ce10fb4a7e0d8d0800000000000000
-      internalID: -2823502271596073838
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cave-walls_8
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 37
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c97eca07c2446faa0800000000000000
-      internalID: -6127635285331351652
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cave-walls_9
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 5
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: eab930c7b547e3000800000000000000
-      internalID: 17579384827517870
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cave-walls_11
-      rect:
-        serializedVersion: 2
-        x: 112
-        y: 37
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0b4b5c7ce871401c0800000000000000
-      internalID: -4538476622478199632
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cave-walls_12
+      name: incave_water_2
       rect:
         serializedVersion: 2
         x: 16
-        y: 37
-        width: 16
+        y: 48
+        width: 16.2
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6ca68a3a9b2568e40800000000000000
-      internalID: 5658300939105757894
+      spriteID: 4dddf629e30566a80800000000000000
+      internalID: -8473997419176010284
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cave-walls_14
+      name: incave_water_3
       rect:
         serializedVersion: 2
-        x: 64
-        y: 21
-        width: 16
+        x: 32
+        y: 48
+        width: 16.2
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2c080bf059ce02660800000000000000
-      internalID: 7359141916080898242
+      spriteID: 6040364f4dff14040800000000000000
+      internalID: 4630263182011859974
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cave-walls_15
+      name: incave_water_4
       rect:
         serializedVersion: 2
-        x: 112
-        y: 21
-        width: 16
+        x: 48
+        y: 48
+        width: 16.2
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f27264414f8d61340800000000000000
-      internalID: 4834289792852567855
+      spriteID: 96cd921fbc0b286d0800000000000000
+      internalID: -2989632812649685911
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cave-walls_17
+      name: incave_water_5
       rect:
         serializedVersion: 2
-        x: 80
-        y: 5
-        width: 16
+        x: 0
+        y: 32
+        width: 16.2
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6b3ece7cbdda8d890800000000000000
-      internalID: -7433000025511369802
+      spriteID: 8ee4b2bc627538ee0800000000000000
+      internalID: -1260067646604620056
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cave-walls_18
+      name: incave_water_6
       rect:
         serializedVersion: 2
-        x: 96
-        y: 5
-        width: 16
+        x: 16
+        y: 32
+        width: 16.2
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f492a6b44eec099a0800000000000000
-      internalID: -6228250804740282033
+      spriteID: 8ff0ded9029bae4d0800000000000000
+      internalID: -3104465443378884616
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cave-walls_19
+      name: incave_water_7
       rect:
         serializedVersion: 2
-        x: 112
-        y: 5
-        width: 16
+        x: 32
+        y: 32
+        width: 16.2
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 631a1f3cdd02e7f90800000000000000
-      internalID: -6954084637766213322
+      spriteID: b78cec4af6082efb0800000000000000
+      internalID: -4619989050733967237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: incave_water_8
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 32
+        width: 16.2
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db322bdd01fe3eba0800000000000000
+      internalID: -6060737817792601155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: incave_water_9
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 16
+        width: 16.2
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ea8bddd37cb83a00800000000000000
+      internalID: 736545744904489701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: incave_water_10
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 16
+        width: 16.2
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4634ee3db413c0510800000000000000
+      internalID: 1516641376264930148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: incave_water_11
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 16
+        width: 16.2
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f215a12ac1a32910800000000000000
+      internalID: 1811469364653003506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: incave_water_12
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16.2
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b3655b9d0b7aa1a0800000000000000
+      internalID: -6797485389191486539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: incave_water_13
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16.2
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1597e6cdb8da1970800000000000000
+      internalID: 8726525537581241631
       vertices: []
       indices: 
       edges: []
