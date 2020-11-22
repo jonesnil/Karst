@@ -72,26 +72,7 @@ public class Player : MonoBehaviour
         Vector3 VerticalMovement = new Vector3(0, Input.GetAxis("Vertical"), 0);
         Vector3 move = (HorizontalMovement + VerticalMovement) * Time.deltaTime * _movementSpeed;
 
-        RaycastHit2D[] results = new RaycastHit2D[4];
-
-        Vector3 bottomOfCollider = new Vector3(transform.position.x, transform.position.y - .5f, transform.position.z);
-        Vector3 rightOfCollider = new Vector3(transform.position.x + .25f, transform.position.y - .25f, transform.position.z);
-        Vector3 leftOfCollider = new Vector3(transform.position.x + .25f, transform.position.y - .25f, transform.position.z);
-        Vector3[] colliderCheckPoints = { transform.position, bottomOfCollider, rightOfCollider, leftOfCollider };
-
-        Collider2D collided = null;
-
-        int index = 0;
-
-        while (index < 4) 
-        { 
-            results[index] = Physics2D.Raycast(colliderCheckPoints[index], move, move.magnitude, ~(1 << 8));
-            if (results[index].collider != null) 
-            {
-                collided = results[index].collider;
-            }
-            index += 1;
-        }
+        Collider2D collided = GetCollision(move);
 
         if(collided == null && !cantMove)
             this.transform.position += move;
@@ -201,14 +182,15 @@ public class Player : MonoBehaviour
         }
     }
 
-    void KnockBack() 
+    Collider2D GetCollision(Vector3 direction) 
     {
         RaycastHit2D[] results = new RaycastHit2D[4];
 
-        Vector3 bottomOfCollider = new Vector3(transform.position.x, transform.position.y - .5f, transform.position.z);
-        Vector3 rightOfCollider = new Vector3(transform.position.x + .25f, transform.position.y - .25f, transform.position.z);
-        Vector3 leftOfCollider = new Vector3(transform.position.x + .25f, transform.position.y - .25f, transform.position.z);
-        Vector3[] colliderCheckPoints = { transform.position, bottomOfCollider, rightOfCollider, leftOfCollider };
+        Vector3 topRight = new Vector3(transform.position.x + .25f, transform.position.y, transform.position.z);
+        Vector3 topLeft = new Vector3(transform.position.x - .25f, transform.position.y, transform.position.z);
+        Vector3 bottomRight = new Vector3(transform.position.x + .25f, transform.position.y - .5f, transform.position.z);
+        Vector3 bottomLeft = new Vector3(transform.position.x - .25f, transform.position.y - .5f, transform.position.z);
+        Vector3[] colliderCheckPoints = { topRight, topLeft, bottomRight, bottomLeft };
 
         Collider2D collided = null;
 
@@ -216,13 +198,19 @@ public class Player : MonoBehaviour
 
         while (index < 4)
         {
-            results[index] = Physics2D.Raycast(colliderCheckPoints[index], knockDirection, knockDirection.magnitude, ~(1 << 8));
+            results[index] = Physics2D.Raycast(colliderCheckPoints[index], direction, direction.magnitude, ~(1 << 8));
             if (results[index].collider != null)
             {
                 collided = results[index].collider;
             }
             index += 1;
         }
+
+        return collided;
+    }
+    void KnockBack() 
+    {
+        Collider2D collided = GetCollision(knockDirection);
 
         if (collided == null && (knockBackFrame <= knockBackFrames))
         {
