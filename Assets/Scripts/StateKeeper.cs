@@ -141,8 +141,6 @@ public class StateKeeper : MonoBehaviour
             hearts[heartCurrent].sprite = halfHeart.sprite;
         }
 
-        Debug.Log(damageLeftOver);
-
         if (damageLeftOver != 0) 
         {
             ChangeHeart(damageLeftOver);
@@ -171,8 +169,19 @@ public class StateKeeper : MonoBehaviour
 
     void OnBeatLevel(object sender, EventArgs args)
     {
-        String sceneName = "Level" + (levelNumber + 1);
+        GameEvents.PlayerHit -= OnPlayerHit;
+        GameEvents.GameOver -= OnGameOver;
+        GameEvents.BeatLevel -= OnBeatLevel;
 
+        StartCoroutine("GoToNextLevel");
+    }
+
+    IEnumerator GoToNextLevel() 
+    {
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+
+        String sceneName = "Level" + (levelNumber + 1);
         SceneManager.LoadScene(sceneName);
     }
 

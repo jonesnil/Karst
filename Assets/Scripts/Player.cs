@@ -36,6 +36,7 @@ public class Player : MonoBehaviour
 
         GameEvents.PlayerHit += OnPlayerHit;
         GameEvents.GameOver += OnGameOver;
+        GameEvents.BeatLevel += OnBeatLevel;
 
         _data.startingHealth = startingHealth;
         _data.health = health;
@@ -220,10 +221,18 @@ public class Player : MonoBehaviour
         }
     }
 
+    void OnBeatLevel(object sender, EventArgs args)
+    {
+        GameEvents.PlayerHit -= OnPlayerHit;
+        GameEvents.GameOver -= OnGameOver;
+        GameEvents.BeatLevel -= OnBeatLevel;
+    }
+
     void OnGameOver(object sender, EventArgs args) 
     {
         GameEvents.PlayerHit -= OnPlayerHit;
         GameEvents.GameOver -= OnGameOver;
+        GameEvents.BeatLevel -= OnBeatLevel;
     }
 
 }
