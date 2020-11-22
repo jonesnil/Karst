@@ -74,6 +74,11 @@ public class Player : MonoBehaviour
 
         Collider2D collided = GetCollision(move);
 
+        if (collided != null && collided.gameObject.tag == "Exit") 
+        {
+            GameEvents.InvokeBeatLevel();
+        }
+
         if(collided == null && !cantMove)
             this.transform.position += move;
 

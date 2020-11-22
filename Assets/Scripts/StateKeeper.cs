@@ -26,6 +26,7 @@ public class StateKeeper : MonoBehaviour
     float healthInterval;
     float healthCurrent;
     [SerializeField] float fadeTime;
+    int levelNumber;
     
 
     [SerializeField] Image fullHeart;
@@ -62,12 +63,16 @@ public class StateKeeper : MonoBehaviour
 
         GameEvents.PlayerHit += OnPlayerHit;
         GameEvents.GameOver += OnGameOver;
+        GameEvents.BeatLevel += OnBeatLevel;
 
         GameOver = false;
         iFrame = 0;
         iFrames = _data.iFrames;
         button.gameObject.GetComponent<Button>().interactable = false;
 
+        String sceneName = SceneManager.GetActiveScene().name;
+        String sceneNumber = sceneName.Substring(sceneName.Length - 1);
+        levelNumber = int.Parse(sceneNumber);
     }
 
     private void Update()
@@ -164,10 +169,18 @@ public class StateKeeper : MonoBehaviour
         buttonText.color = dummyColorButtonText;
     }
 
+    void OnBeatLevel(object sender, EventArgs args)
+    {
+        String sceneName = "Level" + (levelNumber + 1);
+
+        SceneManager.LoadScene(sceneName);
+    }
+
     void OnGameOver(object sender, EventArgs args)
     {
         GameEvents.PlayerHit -= OnPlayerHit;
         GameEvents.GameOver -= OnGameOver;
+        GameEvents.BeatLevel -= OnBeatLevel;
     }
 
     public void RestartGame() 

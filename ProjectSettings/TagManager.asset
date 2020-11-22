@@ -7,6 +7,7 @@ TagManager:
   - Baddie
   - Bullet
   - Wall
+  - Exit
   layers:
   - Default
   - TransparentFX
