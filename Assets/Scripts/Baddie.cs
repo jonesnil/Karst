@@ -17,6 +17,8 @@ public class Baddie : MonoBehaviour
     Rigidbody2D body;
     SpriteRenderer sprite;
     bool seen;
+    AudioSource shotSound;
+    PolygonCollider2D collider;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +30,8 @@ public class Baddie : MonoBehaviour
         red = false;
         redFrame = 0;
         redFrames = 15;
+        shotSound = this.GetComponent<AudioSource>();
+        collider = this.GetComponent<PolygonCollider2D>();
     }
 
     // Update is called once per frame
@@ -65,6 +69,7 @@ public class Baddie : MonoBehaviour
 
             Destroy(collision.collider.gameObject);
 
+            shotSound.Play();
 
             if (this._health <= 0)
                 Die();
@@ -115,6 +120,9 @@ public class Baddie : MonoBehaviour
     public void Die() 
     {
         Instantiate(deathEffectPrefab, this.transform.position, Quaternion.identity);
-        Destroy(this.gameObject);
+
+        body.simulated = false;
+        collider.enabled = false;
+        this.sprite.enabled = false;
     }
 }

@@ -5,8 +5,32 @@ using UnityEngine.SceneManagement;
 
 public class StartScreen : MonoBehaviour
 {
+
+    AudioSource introSong;
+    bool buttonPressed;
+
+    private void Start()
+    {
+        introSong = this.GetComponent<AudioSource>();
+    }
+
+    private void Update()
+    {
+        if (buttonPressed) 
+        {
+            float volume = introSong.volume;
+            introSong.volume = Mathf.Lerp(volume, 0, .005f);
+        }   
+    }
+
     public void StartPressed() 
     {
-        SceneManager.LoadScene("Level1");   
+        buttonPressed = true;
+        Invoke("StartGame", .5f);
+    }
+
+    public void StartGame() 
+    {
+        SceneManager.LoadScene("Level1");
     }
 }

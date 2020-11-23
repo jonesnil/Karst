@@ -8,6 +8,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] float _moveSpeed;
     PolygonCollider2D collider;
     public Vector3 direction;
+
     
     // Start is called before the first frame update
     void Start()
@@ -32,6 +33,11 @@ public class Bullet : MonoBehaviour
             if (result.collider != null && result.collider.tag == "Wall")
             {
                 hitWall = true;
+            }
+
+            if (result.collider != null && result.collider.gameObject.layer == 4)
+            {
+                hitWall = false;
             }
         }
 

@@ -277,6 +277,7 @@ MonoBehaviour:
   emptyHeart: {fileID: 8936951817254069670, guid: 5a19830d8e4bdf14b854bee64efec1b5, type: 3}
   _data: {fileID: 11400000, guid: 9f886945a1e0f7e42a9b2b81cd6bb05c, type: 2}
   levelOneName: Level1
+  portalSoundPrefab: {fileID: 2291493786948311365, guid: b016f15bd8793cc47b41dcc7d7ad6f17, type: 3}
 --- !u!1 &2745251428344432020
 GameObject:
   m_ObjectHideFlags: 0

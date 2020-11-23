@@ -40,6 +40,8 @@ public class StateKeeper : MonoBehaviour
     [SerializeField] RunTimeData _data;
     [SerializeField] string levelOneName;
 
+    [SerializeField] GameObject portalSoundPrefab;
+
     bool GameOver;
 
     // Start is called before the first frame update
@@ -94,8 +96,12 @@ public class StateKeeper : MonoBehaviour
         {
             iFrame += 1;
             if (iFrame >= iFrames)
+            {
                 hit = false;
+                iFrame = 0;
+            }
         }
+
     }
 
     // Update is called once per frame
@@ -103,21 +109,29 @@ public class StateKeeper : MonoBehaviour
     {
         Baddie baddie = args.baddiePayload;
         float damage = baddie.damage;
-        if (healthCurrent - damage > 0)
+
+        if (!hit)
         {
-            if (!hit)
+            if (healthCurrent - damage > 0)
             {
-                ChangeHeart(baddie.damage);
                 hit = true;
                 iFrame = 0;
             }
+            else
+            {
+                GameOver = true;
+                button.gameObject.GetComponent<Button>().interactable = true;
+                StartCoroutine("delayGameOver");
+            }
+
+            ChangeHeart(baddie.damage);
         }
-        else 
-        {
-            GameOver = true;
-            button.gameObject.GetComponent<Button>().interactable = true;
-            GameEvents.InvokeGameOver();
-        }
+    }
+
+    IEnumerator delayGameOver() 
+    {
+        yield return new WaitForEndOfFrame();
+        GameEvents.InvokeGameOver();
     }
 
     void ChangeHeart(float damage) 
@@ -130,28 +144,31 @@ public class StateKeeper : MonoBehaviour
         float heartTop = (heartCurrent + 1) * healthInterval;
         float heartBottom = (heartCurrent) * healthInterval;
 
-
-        if ((healthCurrent - damage) < heartBottom)
+        if (healthCurrent >= 0)
         {
-            currDamage = healthCurrent - heartBottom;
-            damageLeftOver = damage - currDamage;
-        }
 
-        healthCurrent -= currDamage;
+            if ((healthCurrent - damage) < heartBottom)
+            {
+                currDamage = healthCurrent - heartBottom;
+                damageLeftOver = damage - currDamage;
+            }
 
-        if (healthCurrent <= heartTop - healthInterval)
-        {
-            hearts[heartCurrent].sprite = emptyHeart.sprite;
-            heartCurrent -= 1;
-        }
-        else if (healthCurrent <= heartTop - (healthInterval/2))
-        {
-            hearts[heartCurrent].sprite = halfHeart.sprite;
-        }
+            healthCurrent -= currDamage;
 
-        if (damageLeftOver != 0) 
-        {
-            ChangeHeart(damageLeftOver);
+            if (healthCurrent <= heartTop - healthInterval)
+            {
+                hearts[heartCurrent].sprite = emptyHeart.sprite;
+                heartCurrent -= 1;
+            }
+            else if (healthCurrent <= heartTop - (healthInterval / 2))
+            {
+                hearts[heartCurrent].sprite = halfHeart.sprite;
+            }
+
+            if (damageLeftOver != 0)
+            {
+                ChangeHeart(damageLeftOver);
+            }
         }
 
     }
@@ -190,6 +207,8 @@ public class StateKeeper : MonoBehaviour
         GameEvents.GameOver -= OnGameOver;
         GameEvents.BeatLevel -= OnBeatLevel;
 
+        Instantiate(portalSoundPrefab, transform.position, Quaternion.identity);
+
         StartCoroutine("GoToNextLevel");
     }
 
@@ -200,7 +219,12 @@ public class StateKeeper : MonoBehaviour
 
         if ((levelNumber + 1) <= totalLevels)
         {
-            String sceneName = "Level" + (levelNumber + 1);
+            String sceneName;
+            if((levelNumber + 1) != 9)
+                sceneName = "Level" + (levelNumber + 1);
+            else
+                sceneName = "Level_" + (levelNumber + 1);
+
             SceneManager.LoadScene(sceneName);
         }
         else 

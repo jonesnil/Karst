@@ -27,6 +27,8 @@ public class Player : MonoBehaviour
     Animator staffAnimator;
     SpriteRenderer staffSprite;
     bool runningAnimation;
+    AudioSource hitNoise;
+    [SerializeField] GameObject baddiePrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +53,7 @@ public class Player : MonoBehaviour
         staffAnimator = staff.GetComponent<Animator>();
         staffSprite = staff.GetComponent<SpriteRenderer>();
         runningAnimation = false;
+        hitNoise = this.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -80,7 +83,15 @@ public class Player : MonoBehaviour
             GameEvents.InvokeBeatLevel();
         }
 
-        if(collided == null && !cantMove)
+        if (collided != null && collided.gameObject.tag == "Trap")
+        {
+            Destroy(collided.gameObject);
+            collided = null;
+            Vector3 trapPos = new Vector3(this.transform.position.x - 7f, this.transform.position.y, this.transform.position.z);
+            Instantiate(baddiePrefab, trapPos, Quaternion.identity);
+        }
+
+        if (collided == null && !cantMove)
             this.transform.position += move;
 
         else if (collided != null && !cantMove && knockedBack && !(collided.tag == "Wall"))
@@ -166,6 +177,7 @@ public class Player : MonoBehaviour
             knockBackFrame = 0;
             knockDirection = (this.transform.position - baddie.gameObject.transform.position).normalized * knockBackSpeed * Time.deltaTime;
 
+            hitNoise.Play();
             baddie.Die();
         }
     }
