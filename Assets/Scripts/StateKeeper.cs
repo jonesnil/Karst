@@ -15,6 +15,9 @@ public class StateKeeper : MonoBehaviour
     Image button;
     Text backgroundText;
     Text buttonText;
+    Image skull;
+    Image bone;
+    Image bone2;
 
     Image[] hearts;
 
@@ -27,6 +30,7 @@ public class StateKeeper : MonoBehaviour
     float healthCurrent;
     [SerializeField] float fadeTime;
     int levelNumber;
+    int totalLevels;
     
 
     [SerializeField] Image fullHeart;
@@ -49,6 +53,9 @@ public class StateKeeper : MonoBehaviour
         backgroundText = this.transform.GetChild(5).GetComponent<Text>();
         button = this.transform.GetChild(6).GetComponent<Image>();
         buttonText = this.transform.GetChild(6).GetChild(0).GetComponent<Text>();
+        skull = this.transform.GetChild(7).GetComponent<Image>();
+        bone = this.transform.GetChild(8).GetComponent<Image>();
+        bone2 = this.transform.GetChild(9).GetComponent<Image>();
 
         hearts = new Image[4];
         hearts[0] = heart1;
@@ -73,6 +80,7 @@ public class StateKeeper : MonoBehaviour
         String sceneName = SceneManager.GetActiveScene().name;
         String sceneNumber = sceneName.Substring(sceneName.Length - 1);
         levelNumber = int.Parse(sceneNumber);
+        totalLevels = SceneManager.sceneCountInBuildSettings - 2;
     }
 
     private void Update()
@@ -154,17 +162,26 @@ public class StateKeeper : MonoBehaviour
         Color dummyColorText = backgroundText.color;
         Color dummyColorButton = button.color;
         Color dummyColorButtonText = buttonText.color;
+        Color dummyColorSkull = skull.color;
+        Color dummyColorBone = bone.color;
+        Color dummyColorBone2 = bone2.color;
 
 
         dummyColorBackground.a = Mathf.Lerp(dummyColorBackground.a, 255f, .01f * Time.deltaTime * fadeTime);
         dummyColorText.a = Mathf.Lerp(dummyColorBackground.a, 255f, .01f * Time.deltaTime * fadeTime);
         dummyColorButton.a = Mathf.Lerp(dummyColorButton.a, 255f, .01f * Time.deltaTime * fadeTime);
         dummyColorButtonText.a = Mathf.Lerp(dummyColorButtonText.a, 255f, .01f * Time.deltaTime * fadeTime);
+        dummyColorSkull.a = Mathf.Lerp(dummyColorSkull.a, 255f, .01f * Time.deltaTime * fadeTime);
+        dummyColorBone.a = Mathf.Lerp(dummyColorBone.a, 255f, .01f * Time.deltaTime * fadeTime);
+        dummyColorBone2.a = Mathf.Lerp(dummyColorBone2.a, 255f, .01f * Time.deltaTime * fadeTime);
 
         background.color = dummyColorBackground;
         backgroundText.color = dummyColorText;
         button.color = dummyColorButton;
         buttonText.color = dummyColorButtonText;
+        skull.color = dummyColorSkull;
+        bone.color = dummyColorBone;
+        bone2.color = dummyColorBone2;
     }
 
     void OnBeatLevel(object sender, EventArgs args)
@@ -181,8 +198,15 @@ public class StateKeeper : MonoBehaviour
         yield return new WaitForEndOfFrame();
         yield return new WaitForEndOfFrame();
 
-        String sceneName = "Level" + (levelNumber + 1);
-        SceneManager.LoadScene(sceneName);
+        if ((levelNumber + 1) <= totalLevels)
+        {
+            String sceneName = "Level" + (levelNumber + 1);
+            SceneManager.LoadScene(sceneName);
+        }
+        else 
+        {
+            SceneManager.LoadScene("WinScreen");
+        }
     }
 
     void OnGameOver(object sender, EventArgs args)
