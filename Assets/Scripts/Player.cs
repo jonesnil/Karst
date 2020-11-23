@@ -78,6 +78,12 @@ public class Player : MonoBehaviour
 
         Collider2D collided = GetCollision(move);
 
+        Vector3 sideMove = new Vector3(move.x, 0f, move.z);
+        Collider2D collidedSide = GetCollision(sideMove);
+
+        Vector3 vertMove = new Vector3(0f, move.y, move.z);
+        Collider2D collidedVert = GetCollision(vertMove);
+
         if (collided != null && collided.gameObject.tag == "Exit") 
         {
             GameEvents.InvokeBeatLevel();
@@ -91,11 +97,20 @@ public class Player : MonoBehaviour
             Instantiate(baddiePrefab, trapPos, Quaternion.identity);
         }
 
-        if (collided == null && !cantMove)
-            this.transform.position += move;
+        if (!cantMove)
+        {
+            if (collided == null)
+                this.transform.position += move;
 
-        else if (collided != null && !cantMove && knockedBack && !(collided.tag == "Wall"))
-            this.transform.position += move;
+            else if (collidedSide == null)
+                this.transform.position += sideMove;
+
+            else if (collidedVert == null)
+                this.transform.position += vertMove;
+
+            else if (knockedBack && !(collided.tag == "Wall"))
+                this.transform.position += move;
+        }
 
         if (Input.GetAxis("Horizontal") < 0 && !sprite.flipX) 
         {
@@ -214,9 +229,22 @@ public class Player : MonoBehaviour
     {
         Collider2D collided = GetCollision(knockDirection);
 
-        if (collided == null && (knockBackFrame <= knockBackFrames))
+        Vector3 sideMove = new Vector3(knockDirection.x, 0f, knockDirection.z);
+        Collider2D collidedSide = GetCollision(sideMove);
+
+        Vector3 vertMove = new Vector3(0f, knockDirection.y, knockDirection.z);
+        Collider2D collidedVert = GetCollision(vertMove);
+
+        if (knockBackFrame <= knockBackFrames)
         {
-            this.transform.position += knockDirection;
+            if (collided == null)
+                this.transform.position += knockDirection;
+           
+            else if (collidedSide == null)
+                this.transform.position += sideMove;
+
+            else if (collidedVert == null)
+                this.transform.position += vertMove;
         }
 
         knockBackFrame += 1;
