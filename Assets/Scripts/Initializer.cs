@@ -5,7 +5,8 @@ using UnityEngine;
 public class Initializer : MonoBehaviour
 {
     [SerializeField] RunTimeData _data;
-    [SerializeField] float followDistance;
+    [SerializeField] float followDistanceX;
+    [SerializeField] float followDistanceY;
     [SerializeField] float followSpeed;
 
     // Start is called before the first frame update
@@ -20,7 +21,8 @@ public class Initializer : MonoBehaviour
 
         
 
-        if ((_data.playerPos - mouseWorldPos).magnitude > followDistance) 
+        if (Mathf.Abs(_data.playerPos.x - mouseWorldPos.x) > followDistanceX
+            || Mathf.Abs(_data.playerPos.y - mouseWorldPos.y) > followDistanceY) 
         {
             Vector3 dummyPos = Vector3.Lerp(mouseWorldPos, _data.playerPos, followSpeed * .01f);
             this.transform.position = new Vector3(dummyPos.x, dummyPos.y, this.transform.position.z);

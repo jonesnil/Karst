@@ -174,7 +174,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 42743f9b9a4d18041a9e64e74a63bc4f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -611,7 +611,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 42743f9b9a4d18041a9e64e74a63bc4f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1703,7 +1703,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 42743f9b9a4d18041a9e64e74a63bc4f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5048,6 +5048,18 @@ PrefabInstance:
     - target: {fileID: 2059635958928327441, guid: 59abb1a1e9ac9034b8c0423499874de4, type: 3}
       propertyPath: m_Name
       value: Main Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 2059635958928327443, guid: 59abb1a1e9ac9034b8c0423499874de4, type: 3}
+      propertyPath: followSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2059635958928327443, guid: 59abb1a1e9ac9034b8c0423499874de4, type: 3}
+      propertyPath: followDistanceX
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2059635958928327443, guid: 59abb1a1e9ac9034b8c0423499874de4, type: 3}
+      propertyPath: followDistanceY
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2059635958928327661, guid: 59abb1a1e9ac9034b8c0423499874de4, type: 3}
       propertyPath: m_RootOrder

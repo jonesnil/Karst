@@ -97,5 +97,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data: {fileID: 11400000, guid: 9f886945a1e0f7e42a9b2b81cd6bb05c, type: 2}
-  followDistance: 1.5
-  followSpeed: 1
+  followDistanceX: 0.5
+  followDistanceY: 0.5
+  followSpeed: 5

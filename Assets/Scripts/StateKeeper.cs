@@ -18,6 +18,8 @@ public class StateKeeper : MonoBehaviour
     Image skull;
     Image bone;
     Image bone2;
+    Image contButton;
+    Text contButtonText;
 
     Image[] hearts;
 
@@ -58,6 +60,8 @@ public class StateKeeper : MonoBehaviour
         skull = this.transform.GetChild(7).GetComponent<Image>();
         bone = this.transform.GetChild(8).GetComponent<Image>();
         bone2 = this.transform.GetChild(9).GetComponent<Image>();
+        contButton = this.transform.GetChild(10).GetComponent<Image>();
+        contButtonText = this.transform.GetChild(10).GetChild(0).GetComponent<Text>();
 
         hearts = new Image[4];
         hearts[0] = heart1;
@@ -78,6 +82,7 @@ public class StateKeeper : MonoBehaviour
         iFrame = 0;
         iFrames = _data.iFrames;
         button.gameObject.GetComponent<Button>().interactable = false;
+        contButton.gameObject.GetComponent<Button>().interactable = false;
 
         String sceneName = SceneManager.GetActiveScene().name;
         String sceneNumber = sceneName.Substring(sceneName.Length - 1);
@@ -121,6 +126,7 @@ public class StateKeeper : MonoBehaviour
             {
                 GameOver = true;
                 button.gameObject.GetComponent<Button>().interactable = true;
+                contButton.gameObject.GetComponent<Button>().interactable = true;
                 StartCoroutine("delayGameOver");
             }
 
@@ -199,6 +205,8 @@ public class StateKeeper : MonoBehaviour
         skull.color = dummyColorSkull;
         bone.color = dummyColorBone;
         bone2.color = dummyColorBone2;
+        contButton.color = dummyColorButton;
+        contButtonText.color = dummyColorButtonText;
     }
 
     void OnBeatLevel(object sender, EventArgs args)
@@ -243,5 +251,10 @@ public class StateKeeper : MonoBehaviour
     public void RestartGame() 
     {
         SceneManager.LoadScene(levelOneName);
+    }
+
+    public void ContinueGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
