@@ -1,4 +1,4 @@
-# benbonkin
+# Karst
 
 This is the source code for a game jam game I made
 with sprite artist MisterDll called Karst. It's a top-
